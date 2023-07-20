@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('dev', [App\Http\Controllers\DevelopmentController::class, 'index']);
+
+
 Route::get('/', function () {
     return view('welcome');
 });
