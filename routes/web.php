@@ -38,9 +38,8 @@ Route::group([
 });
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', \App\Http\Controllers\HomeController::class)
+    ->name('home.index');
 
 Route::middleware([
     'auth:sanctum',

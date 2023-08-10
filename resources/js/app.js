@@ -6,4 +6,7 @@ window.Alpine = Alpine;
 
 Alpine.plugin(focus);
 
+Alpine.data('_app', () => (window._app))
+
 Alpine.start();
+

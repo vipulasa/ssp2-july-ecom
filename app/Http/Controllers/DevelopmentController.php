@@ -13,7 +13,7 @@ class DevelopmentController extends Controller
 
         $brand = new BrandController;
 
-        dd($brand());
+        dd($brand->hello_world);
 
 
 
