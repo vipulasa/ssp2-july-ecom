@@ -36,5 +36,9 @@ class RouteServiceProvider extends ServiceProvider
             Route::middleware('web')
                 ->group(base_path('routes/web.php'));
         });
+
+        Route::bind('product_uuid', function ($uuid) {
+            return \App\Models\Product::where('uuid', $uuid)->firstOrFail();
+        });
     }
 }
