@@ -17,6 +17,8 @@ Route::get('dev', [App\Http\Controllers\DevelopmentController::class, 'index']);
 
 Route::get('brands', App\Http\Controllers\BrandController::class);
 
+Route::resource('product', App\Http\Controllers\ProductController::class);
+
 Route::group([
     'prefix' => 'product',
     'as' => 'product.',
@@ -27,7 +29,7 @@ Route::group([
         return 'Product list';
     })->name('list');
 
-    Route::resource('/', App\Http\Controllers\ProductController::class);
+
 
 
 
