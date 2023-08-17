@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\ProductViewEvent;
 use App\Http\Requests\CreateProductRequest;
 use App\Models\Product;
 use App\Models\User;
@@ -55,6 +56,8 @@ class ProductController extends Controller
     public function show(Product $product)
     {
         // this function getting executed
+
+        event(new ProductViewEvent($product));
 
         return view('product.show', [
             'product' => $product

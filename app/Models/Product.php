@@ -38,11 +38,7 @@ class Product extends Model
     {
 
         static::retrieved(function (Product $product) {
-            resolve('SSPEcommerce')->makeHit(
-                class_basename($product),
-                $product->id,
-                'view'
-            );
+
         });
 
         static::creating(function (Product $product) {

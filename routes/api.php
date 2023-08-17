@@ -17,3 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post(
+    '/analytics/{model}/{id}/{action}',
+    [\App\Http\Controllers\Api\AnalyticsController::class, 'makeHit']
+)->name('analytics.makeHit');
