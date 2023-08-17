@@ -54,6 +54,7 @@ class ProductController extends Controller
 
     public function show(Product $product)
     {
+        // this function getting executed
 
         return view('product.show', [
             'product' => $product

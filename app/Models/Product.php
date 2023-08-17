@@ -36,6 +36,15 @@ class Product extends Model
      */
     protected static function booted(): void
     {
+
+        static::retrieved(function (Product $product) {
+            resolve('SSPEcommerce')->makeHit(
+                class_basename($product),
+                $product->id,
+                'view'
+            );
+        });
+
         static::creating(function (Product $product) {
 
         });
@@ -45,7 +54,7 @@ class Product extends Model
         });
 
         static::saving(function (Product $product) {
-            $product->uuid = (string) \Ramsey\Uuid\Uuid::uuid4();
+            $product->uuid = (string)\Ramsey\Uuid\Uuid::uuid4();
         });
 
         static::saved(function (Product $product) {

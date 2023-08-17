@@ -19,6 +19,8 @@ Route::get('brands', App\Http\Controllers\BrandController::class);
 
 Route::resource('product', App\Http\Controllers\ProductController::class);
 
+Route::get('analytics', [App\Http\Controllers\AnalyticsController::class, 'index']);
+
 Route::group([
     'prefix' => 'product',
     'as' => 'product.',
