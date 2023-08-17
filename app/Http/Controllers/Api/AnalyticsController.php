@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Jobs\AnalyticsJob;
 use Illuminate\Http\Request;
 
 class AnalyticsController extends Controller
@@ -13,7 +14,13 @@ class AnalyticsController extends Controller
 
         $model = $model::findOrFail($id);
 
-        resolve('SSPEcommerce')->makeHit(
+//        resolve('SSPEcommerce')->makeHit(
+//            class_basename($model),
+//            $id,
+//            $action
+//        );
+
+        AnalyticsJob::dispatch(
             class_basename($model),
             $id,
             $action
