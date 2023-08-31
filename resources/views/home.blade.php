@@ -8,20 +8,18 @@
     <div class="py-12 product">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                <span x-text="user.name"></span>
-                <span x-text="user.email"></span>
 
                 <div class="grid grid-cols-6 gap-y-2 gap-x-5 p-6">
 
 
                     @foreach($products as $product)
 
-                        <!-- component -->
                         <div class="py-6 col-span-3">
                             <div class="flex bg-white shadow-lg rounded-lg overflow-hidden">
-                                <div class="w-1/3 bg-cover" style="background-image: url('https://source.unsplash.com/random/?{{ $generateKeywords($product) }}')">
-                                </div>
-                                <div class="w-2/3 p-4">
+{{--                                <div class="w-1/3 bg-cover"--}}
+{{--                                     style="background-image: url('https://source.unsplash.com/random/?{{ $generateKeywords($product) }}')">--}}
+{{--                                </div>--}}
+                                <div class="w-2/3 p-4 relative">
                                     <h1 class="text-gray-900 font-bold text-2xl">{{ $product->title }}</h1>
                                     <p class="mt-2 text-gray-600 text-sm">{{ $product->summary }}</p>
                                     <div class="flex item-center mt-2">
@@ -43,7 +41,7 @@
                                     </div>
                                     <div class="flex item-center justify-between mt-3">
                                         <h1 class="text-gray-700 font-bold text-xl">${{ $product->price }}</h1>
-                                        <button class="px-3 py-2 bg-gray-800 text-white text-xs font-bold uppercase rounded">Add to Cart</button>
+                                        @livewire('add-to-cart', ['product' => $product])
                                     </div>
                                 </div>
                             </div>

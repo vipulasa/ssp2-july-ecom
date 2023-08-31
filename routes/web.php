@@ -21,6 +21,8 @@ Route::resource('product', App\Http\Controllers\ProductController::class);
 
 Route::get('analytics', [App\Http\Controllers\AnalyticsController::class, 'index']);
 
+Route::get('cart', [\App\Http\Controllers\CartController::class, 'index']);
+
 Route::group([
     'prefix' => 'product',
     'as' => 'product.',
