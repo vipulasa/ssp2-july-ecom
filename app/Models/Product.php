@@ -2,18 +2,29 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+/**
+ * Class Product
+ * @package App\Models
+ */
 class Product extends Model
 {
     use SoftDeletes;
 
+    /**
+     * @var int[]
+     */
     protected $attributes = [
         'sort_order' => 0,
         'status' => 1
     ];
 
+    /**
+     * @var string[]
+     */
     protected $fillable = [
         'uuid',
         'title',
@@ -26,10 +37,16 @@ class Product extends Model
         'status',
     ];
 
+    /**
+     * @var string[]
+     */
     protected $casts = [
         'status' => 'boolean',
     ];
 
+    protected $with = [
+        'categories'
+    ];
 
     /**
      * The "booted" method of the model.
@@ -56,5 +73,23 @@ class Product extends Model
         static::saved(function (Product $product) {
 
         });
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class, 'product_categories');
+    }
+
+    public function scopePublished(Builder $builder)
+    {
+        return $builder->where('status', 1);
+    }
+
+    public function scopeSortByOrder(Builder $builder)
+    {
+        return $builder->orderBy('sort_order', 'asc');
     }
 }

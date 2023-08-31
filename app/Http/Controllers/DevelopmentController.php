@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Ramsey\Uuid\Uuid;
@@ -10,11 +11,6 @@ class DevelopmentController extends Controller
 {
     public function index(Request $request)
     {
-
-        $brand = new BrandController;
-
-        dd($brand->hello_world);
-
 
 
 //        $middleware = function($next){
@@ -50,6 +46,9 @@ class DevelopmentController extends Controller
 //        $ssp = resolve('SSPEcommerce');
 //
 //        $ssp->setName('ok ela kiri');
+
+        $product = (new Product())->find(10);
+
 
         return view('dashboard');
     }
