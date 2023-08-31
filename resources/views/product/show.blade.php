@@ -17,7 +17,7 @@
                     <p class="text-xl font-bold text-gray-500">{{ $product->price }} €</p>
                     <p class="text-gray-600">{{ $product->description }}</p>
                     <div class="mt-4">
-                        <button type="button" x-analytic-hit:product.elakiri="{{ $product->id }}">Add to Cart</button>
+                        <button type="button" x-analytic-hit:product.click="{{ $product->id }}">Add to Cart</button>
                     </div>
                 </div>
             </div>

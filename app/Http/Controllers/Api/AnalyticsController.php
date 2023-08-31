@@ -20,6 +20,8 @@ class AnalyticsController extends Controller
 //            $action
 //        );
 
+
+        // DONT NEED TO USE THIS !!!!
         AnalyticsJob::dispatch(
             class_basename($model),
             $id,
