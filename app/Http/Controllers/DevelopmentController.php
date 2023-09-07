@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\User;
+use App\Notifications\NewProductReleaseNotification;
 use Illuminate\Http\Request;
 use Ramsey\Uuid\Uuid;
 
@@ -47,7 +49,10 @@ class DevelopmentController extends Controller
 //
 //        $ssp->setName('ok ela kiri');
 
-        $product = (new Product())->find(10);
+//        $product = (new Product())->find(10);
+
+        (new User())->find(1)->notify(new NewProductReleaseNotification());
+
 
 
         return view('dashboard');

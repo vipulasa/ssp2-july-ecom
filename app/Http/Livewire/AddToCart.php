@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Notifications\ProductAddedToCartNotification;
 use Livewire\Component;
 
 class AddToCart extends Component
@@ -62,6 +63,11 @@ class AddToCart extends Component
         ]);
 
         $this->message = 'Product added to cart.';
+
+        // send notification to the user
+        auth()
+            ->user()
+            ->notify(new ProductAddedToCartNotification($this->product));
     }
 
     public function render()
