@@ -8,10 +8,18 @@ class HomeController extends Controller
 {
     public function __invoke()
     {
-        $products = (new Product())
-            ->published()
-            ->sortByOrder()
-            ->get();
+
+        if (cache()->get('home_products')) {
+            $products = cache()->get('home_products');
+        } else {
+            $products = (new Product())
+                ->published()
+                ->sortByOrder()
+                ->get();
+
+            cache()->set('home_products', $products, 60 * 60 * 24 * 30);
+        }
+
 
         return view('home', [
             'products' => $products,

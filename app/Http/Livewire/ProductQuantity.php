@@ -37,8 +37,12 @@ class ProductQuantity extends Component
     {
         $product = $this->cart->products()->where('product_id', $this->product->id)->first();
 
+        $new_quantity = $product->pivot->quantity + 1;
+
+        // $new_quantity <= $product->stock
+
         $product->pivot->update([
-            'quantity' => $product->pivot->quantity + 1,
+            'quantity' => $new_quantity,
             'total' => $product->pivot->total + $product->price,
         ]);
 

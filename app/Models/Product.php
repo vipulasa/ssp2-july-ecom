@@ -71,7 +71,7 @@ class Product extends Model
         });
 
         static::saved(function (Product $product) {
-
+            cache()->forget('home_products');
         });
     }
 
