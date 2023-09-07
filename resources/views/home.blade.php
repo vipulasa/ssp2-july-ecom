@@ -14,7 +14,7 @@
 
                     @foreach($products as $product)
 
-                        <div class="py-6 col-span-3">
+                        <div class="py-6 col-span-2">
                             <div class="flex bg-white shadow-lg rounded-lg overflow-hidden">
 {{--                                <div class="w-1/3 bg-cover"--}}
 {{--                                     style="background-image: url('https://source.unsplash.com/random/?{{ $generateKeywords($product) }}')">--}}

@@ -6,6 +6,7 @@
     </x-slot>
 
     <div class="py-12">
+
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             @if($cart)
                 <table>
@@ -17,14 +18,16 @@
                         <td>Actions</td>
                     </tr>
 
-                @foreach($cart->products as $product)
-                    <tr>
-                        <td>{{ $product->title }}</td>
-                        <td>${{ number_format($product->price, 2) }}</td>
-                        <td>{{ $product->pivot->quantity }}</td>
-                        <td>${{ number_format($product->pivot->total, 2) }}</td>
-                    </tr>
-                @endforeach
+                    @foreach($cart->products as $product)
+                        <tr>
+                            <td>{{ $product->title }}</td>
+                            <td>${{ number_format($product->price, 2) }}</td>
+                            <td>
+                                @livewire('product-quantity', ['product' => $product], key($product->id))
+                            </td>
+                            <td>${{ number_format($product->pivot->total, 2) }}</td>
+                        </tr>
+                    @endforeach
                 </table>
             @endif
         </div>
