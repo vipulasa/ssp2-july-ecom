@@ -29,12 +29,15 @@ class CartIcon extends Component
 
     public function mount()
     {
-        // check if the user has a cart
-        $cart = auth()->user()->cart()->where('is_paid', false)->first();
+        if (auth()->check()) {
+            // check if the user has a cart
+            $cart = auth()->user()?->cart()->where('is_paid', false)->first();
 
-        if($cart){
-            $this->total_products = $cart->products()->count();
+            if ($cart) {
+                $this->total_products = $cart->products()->count();
+            }
         }
+
     }
 
     public function render()
